@@ -1,0 +1,21 @@
+name: MLflow CI Trigger
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          pip install mlflow scikit-learn pandas
+      - name: Run MLflow Project
+        run: |
+          mlflow run Workflow-CI/MLProject --experiment-name "CI_Training"
