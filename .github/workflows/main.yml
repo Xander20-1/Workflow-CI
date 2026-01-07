@@ -17,6 +17,7 @@ jobs:
         run: |
           pip install mlflow pandas scikit-learn
 
-      - name: Run MLflow Project
+      - name: Run Model Training Directly
         run: |
-          mlflow run MLProject --experiment-name "Titanic_Experiment" --env-manager local
+          # Jalankan script Python langsung (Bypass mlflow run CLI)
+          python MLProject/modelling.py
